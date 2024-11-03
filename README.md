@@ -21,7 +21,12 @@ If you are not technical you can ask us for a demo link.
 
 ## Compilation & Deployment
 
-For preparation to deployment you need to create an .env file from .env.example
+> [!IMPORTANT]  
+> Make sure your **npm-modules-engine** version is at least **0.5.0** (we are using nearly the latest release with new features and developments) and not the default **0.2.0**
+![NPM-MODULES-ENGINE](./demo/npm-modules-engine.png)
+
+> [!NOTE]  
+>For preparation to deployment you need to create an **.env** file from **.env.example**
 
 Use your case of deployment :
 
