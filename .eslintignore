@@ -1,0 +1,9 @@
+node
+node_modules
+tests
+dist
+webpack.config.js
+css/main.js
+javascript/main.js
+javascript/tailwind.js
+*.min.js

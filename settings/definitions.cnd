@@ -1,0 +1,134 @@
+<jnt = 'http://www.jahia.org/jahia/nt/1.0'>
+<jmix = 'http://www.jahia.org/jahia/mix/1.0'>
+<tenet = 'http://www.gladtek.com/jahia/tenet/nt/1.0'>
+<tenetmix = 'http://www.gladtek.com/jahia/tenet/mix/1.0'>
+
+[tenetmix:tenetEditorials] > jmix:editorialContent mixin
+[tenetmix:tenetComponents] > jmix:droppableContent, jmix:editorialContent mixin
+
+[tenetmix:noPreview] mixin
+
+[tenet:friendlyCaptchaConfig] mixin
+extends = jnt:virtualsite
+- friendlyCaptchaKey (string) mandatory
+- friendlyCaptchaSecret (string)
+
+[tenet:navMenu] > jnt:content, mix:title, tenetmix:tenetComponents, jmix:navMenuComponent
+ orderable
+ - base (string,choicelist) nofulltext < 'home', 'currentPage'
+ - maxDepth (long) = 2 mandatory
+ - startLevel (long) = 0 mandatory
+ - menuItemView (string,choicelist[templates='jmix:navMenuItem,menuItem',resourceBundle,image]) = menuElement nofulltext
+ - logo (weakreference, picker[type='image'])
+
+[tenet:footerMenu] > jnt:content, mix:title, tenetmix:tenetComponents
+ - logo (weakreference, picker[type='image'])
+ - resume (string, richtext) i18n
+ - startYear (long) = 2020 autocreated mandatory
+ + socialMediaHolder (tenet:socialMediaHolder) = tenet:socialMediaHolder autocreated
+ + * (tenet:footerColumnLinks) = tenet:footerColumnLinks
+
+[tenet:footerColumnLinks] > jnt:content, mix:title, jmix:list orderable
+ + * (jnt:externalLink)
+ + * (jnt:nodeLink)
+
+[tenet:location] > jnt:content, tenetmix:tenetComponents, mix:title
+ - jcr:title (string) i18n mandatory
+ - description (string,richtext) i18n mandatory
+ - image (weakreference, picker[type='image']) mandatory < 'jmix:image'
+ - country (string,choicelist[country])
+ + * (tenet:scene)
+
+[tenet:sceneCharacters] mixin
+ extends = tenet:scene
+- characters (weakreference, choicelist[nodes='$currentSite//*;tenet:character']) multiple
+- invertedCharacters (weakreference, choicelist[nodes='$currentSite//*;tenet:character']) multiple
+
+[tenet:scene] > jnt:content, mix:title
+ - jcr:title (string) i18n mandatory
+ - description (string,richtext) i18n mandatory
+ - day (long) = 0 indexed=no < '[0,100]'
+ - image (weakreference, picker[type='image']) < 'jmix:image'
+
+[tenet:scenesQuery] > jnt:content, tenetmix:tenetComponents, tenetmix:noPreview 
+
+[tenet:charactersQuery] > jnt:content, tenetmix:tenetComponents, tenetmix:noPreview 
+- numberOfCharacters (string,choicelist[resourceBundle]) = '3' autocreated < '1', '2', '3', '4', '5', '6'
+
+
+[tenet:characterSection] > jnt:content, tenetmix:tenetComponents orderable
+ - title (string) i18n
+ - subtitle (string) i18n
+ + * (tenet:character)
+
+[tenet:character] > jnt:content, jmix:mainResource
+ - name (string) primary i18n mandatory
+ - function (string) i18n
+ - description (string,richtext) i18n mandatory
+ - image (weakreference, picker[type='image']) mandatory < 'jmix:image'
+
+[tenet:faqSection] > jnt:content, tenetmix:tenetComponents, tenetmix:noPreview orderable
+ - title (string) i18n
+ - subtitle (string) i18n
+ + themes (tenet:faqThemes) = tenet:faqThemes autocreated
+ + * (tenet:faq)
+
+ [tenet:faqThemes] > jnt:content
+ + * (tenet:faqTheme)
+
+ [tenet:faqTheme] > jnt:content, mix:title
+
+[tenet:faq] > jnt:content
+ - question (string) i18n
+ - answer (string, richtext) i18n
+ - themes (weakreference, choicelist[nodes='$currentSite//*;tenet:faqTheme']) mandatory multiple
+
+[tenet:testimonialSection] > jnt:content, tenetmix:tenetComponents, tenetmix:noPreview orderable
+ - title (string) i18n
+ - subtitle (string) i18n
+ + * (tenet:testimonial)
+
+[tenet:testimonial] > jnt:content
+ - character (weakreference, choicelist[nodes='$currentSite//*;tenet:character'])
+ - rating (long) = 5 indexed=no < '[1,5]'
+ - message (string, richtext) i18n
+
+[tenetmix:hasGallery] mixin
+extends = tenet:character, tenet:location, tenet:scene
+- gallery (weakreference, picker[type='image']) multiple
+
+[tenet:skill] > jnt:content, tenetmix:noPreview
+ - name (string) i18n
+ - description (string, richtext) i18n
+
+[tenet:skillsHolder] > jnt:content orderable 
+ + * (tenet:skill)
+
+[tenetmix:hasSkills] mixin
+extends = tenet:character
+ + skillsHolder (tenet:skillsHolder) = tenet:skillsHolder autocreated
+
+[tenetmix:hasYoutubeSoundtrack] mixin
+extends = tenet:character,  tenet:location, tenet:scene
+ - videoId (string) mandatory
+
+[tenetmix:styleForLink] mixin
+extends = jnt:externalLink, jnt:nodeLink
+ - cssStyleOverride (string) hidden
+ - linkBackgroundColor(string,choicelist[resourceBundle]) < '2563EB', '8B5CF6', 'DB2777', '475569', 'EA580C'
+
+[tenet:socialMediaLink] > jnt:externalLink
+ - socialMediaType (string,choicelist[resourceBundle]) = 'github' autocreated < 'facebook', 'github', 'linkedin'
+
+[tenet:socialMediaHolder] > jnt:content orderable 
+ + * (tenet:socialMediaLink)
+
+[tenet:headerSection] > jnt:content, tenetmix:tenetComponents, mix:title orderable
+ - description (string,richtext) i18n mandatory
+ - image (weakreference, picker[type='image']) mandatory < 'jmix:image'
+ + * (jnt:externalLink)
+ + * (jnt:nodeLink)
+
+[tenet:contactForm] > jnt:content, tenetmix:tenetComponents
+- redTeamPic (weakreference, picker[type='image']) mandatory < 'jmix:image'
+- blueTeamPic (weakreference, picker[type='image']) mandatory < 'jmix:image'

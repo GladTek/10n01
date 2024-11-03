@@ -1,0 +1,14 @@
+.babelrc
+.env
+.eslintrc.cjs
+.eslintignore
+.idea
+.yarn
+.vscode
+*.tgz
+README.md
+settings/README.txt
+src
+tests
+webpack.config.js
+jsconfig.json*

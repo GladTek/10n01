@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "allowSyntheticDefaultImports": false,
+    "paths": {
+      "~/*": ["./src/*"],
+      "@Hydrated/*": ["./src/client/*"],
+      "@Shared/*": ["./src/shared/*"],
+      "@Server/*": ["./src/server/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist"]
+}

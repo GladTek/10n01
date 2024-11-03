@@ -1,0 +1,38 @@
+{
+  "day": "Day",
+  "section": {
+    "characters": {
+      "team" : "The main characters",
+      "inNormalFlow" : "Characters in Normal Flow",
+      "inInvertedFlow" : "Characters in Inverted Flow",
+      "some" :  "Some Characters"
+    },
+    "skills": {
+      "title" : "Skills"
+    },
+    "video": {
+      "title" : "Soundtrack Video"
+    },
+    "gallery": {
+      "title" : "Gallery"
+    },
+    "relatedScenes": {
+      "title" : "Scenes",
+      "inNormalFlow" : "Normal Flow Scenes",
+      "inInvertedFlow" : "Inverted Flow Scenes"
+    },
+    "footer" : {
+      "copyrightMessage" : "Present (and some timelines to Past). Gladtek, All rights reserved."
+    }
+  },
+  "countries": {
+    "UA": "Ukraine",
+    "NO": "Norway",
+    "IN": "India",
+    "GB": "United Kingdom",
+    "IT": "Italy",
+    "EE": "Estonia",
+    "VN": "Vietnam",
+    "RU": "Russia"
+  }
+}

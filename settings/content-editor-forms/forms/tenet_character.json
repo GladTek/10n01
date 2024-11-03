@@ -1,0 +1,25 @@
+{
+  "nodeType": "tenet:character",
+  "sections": [
+    {
+      "name": "visibility",
+      "hide": true
+    },
+    {
+      "name": "seo",
+      "hide": true
+    },
+    {
+      "name": "layout",
+      "hide": true
+    },
+    {
+      "name": "classification",
+      "hide": true
+    },
+    {
+      "name": "metadata",
+      "hide": true
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "tenet:character",
+  "fields": [
+    {
+      "name": "image",
+      "selectorType": "Picker",
+      "selectorOptionsMap": {
+        "type":"image",
+        "accordionItem": {
+          "picker-media": {
+            "rootPath": "/sites/{site}/files",
+            "treeConfig": {
+              "hideRoot": true
+            }
+          }
+        }
+      }
+    }
+  ]
+}
